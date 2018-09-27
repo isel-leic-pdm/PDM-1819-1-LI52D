@@ -1,7 +1,8 @@
 import java.util.NoSuchElementException
 
 fun getTokens(exp: String) =
-        exp.split(' ', '\t', '\n', '\r').map { it.trim() }.toMutableList()
+        exp.split(' ', '\t', '\n', '\r')
+                .map { it.trim() }.toMutableList()
 
 fun constant(token: String): Int? =  token.toIntOrNull()
 
@@ -10,13 +11,13 @@ fun expression(tokens: MutableList<String>): Expression {
         throw NoSuchElementException()
 
     val value = constant(tokens.first())
-    return if (value != null) { tokens.removeAt(0); Expression(value) }
+    return if (value != null) { tokens.removeAt(0); Constant(value) }
     else arithmeticExpression(tokens)
 }
 
-fun arithmeticExpression(tokens: MutableList<String>): Expression {
+fun arithmeticExpression(tokens: MutableList<String>): ArithmeticExpression {
     val operator = Operator.fromString(tokens.removeAt(0))
-    return Expression(operator, expression(tokens), expression(tokens))
+    return ArithmeticExpression(operator, expression(tokens), expression(tokens))
 }
 
 fun parse(exp: String): Expression {

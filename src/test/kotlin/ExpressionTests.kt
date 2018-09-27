@@ -9,35 +9,35 @@ class ExpressionTests {
     @Test
     fun evaluateOnAConstantExpression_returnsCorrectValue() {
         val expectedValue = 5
-        val sut = Expression(expectedValue)
+        val sut = Constant(expectedValue)
         assertEquals(expectedValue, actual = sut.evaluate())
     }
 
     @Test
     fun evaluateOnADivisionExpression_returnsCorrectValue() {
         val expectedValue = 10 / 5
-        val sut = Expression(opr = Operator.DIV, left = Expression(10), right = Expression(5))
+        val sut = ArithmeticExpression(opr = Operator.DIV, left = Constant(10), right = Constant(5))
         assertEquals(expectedValue, actual = sut.evaluate())
     }
 
     @Test
     fun evaluateOnAMultiplicationExpression_returnsCorrectValue() {
         val expectedValue = 10 * 5
-        val sut = Expression(opr = Operator.TIMES, left = Expression(10), right = Expression(5))
+        val sut = ArithmeticExpression(opr = Operator.TIMES, left = Constant(10), right = Constant(5))
         assertEquals(expectedValue, actual = sut.evaluate())
     }
 
     @Test
     fun evaluateOnAdditionExpression_returnsCorrectValue() {
         val expectedValue = 10 + 5
-        val sut = Expression(opr = Operator.PLUS, left = Expression(10), right = Expression(5))
+        val sut = ArithmeticExpression(opr = Operator.PLUS, left = Constant(10), right = Constant(5))
         assertEquals(expectedValue, actual = sut.evaluate())
     }
 
     @Test
     fun evaluateOnSubtractionExpression_returnsCorrectValue() {
         val expectedValue = 10 - 5
-        val sut = Expression(opr = Operator.MINUS, left = Expression(10), right = Expression(5))
+        val sut = ArithmeticExpression(opr = Operator.MINUS, left = Constant(10), right = Constant(5))
         assertEquals(expectedValue, actual = sut.evaluate())
     }
 
