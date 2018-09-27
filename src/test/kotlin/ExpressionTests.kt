@@ -9,36 +9,36 @@ class ExpressionTests {
     @Test
     fun evaluateOnAConstantExpression_returnsCorrectValue() {
         val expectedValue = 5
-        val sut = Constant(expectedValue)
-        assertEquals(expectedValue, actual = sut.evaluate())
+        val sut = constantEvaluate(expectedValue)
+        assertEquals(expectedValue, actual = sut())
     }
 
     @Test
     fun evaluateOnADivisionExpression_returnsCorrectValue() {
         val expectedValue = 10 / 5
-        val sut = ArithmeticExpression(opr = Operator.DIV, left = Constant(10), right = Constant(5))
-        assertEquals(expectedValue, actual = sut.evaluate())
+        val sut = arithmeticExpressionEvaluate(opr = Operator.DIV, left = constantEvaluate(10), right = constantEvaluate(5))
+        assertEquals(expectedValue, actual = sut())
     }
 
     @Test
     fun evaluateOnAMultiplicationExpression_returnsCorrectValue() {
         val expectedValue = 10 * 5
-        val sut = ArithmeticExpression(opr = Operator.TIMES, left = Constant(10), right = Constant(5))
-        assertEquals(expectedValue, actual = sut.evaluate())
+        val sut = arithmeticExpressionEvaluate(opr = Operator.TIMES, left = constantEvaluate(10), right = constantEvaluate(5))
+        assertEquals(expectedValue, actual = sut())
     }
 
     @Test
     fun evaluateOnAdditionExpression_returnsCorrectValue() {
         val expectedValue = 10 + 5
-        val sut = ArithmeticExpression(opr = Operator.PLUS, left = Constant(10), right = Constant(5))
-        assertEquals(expectedValue, actual = sut.evaluate())
+        val sut = arithmeticExpressionEvaluate(opr = Operator.PLUS, left = constantEvaluate(10), right = constantEvaluate(5))
+        assertEquals(expectedValue, actual = sut())
     }
 
     @Test
     fun evaluateOnSubtractionExpression_returnsCorrectValue() {
         val expectedValue = 10 - 5
-        val sut = ArithmeticExpression(opr = Operator.MINUS, left = Constant(10), right = Constant(5))
-        assertEquals(expectedValue, actual = sut.evaluate())
+        val sut = arithmeticExpressionEvaluate(opr = Operator.MINUS, left = constantEvaluate(10), right = constantEvaluate(5))
+        assertEquals(expectedValue, actual = sut())
     }
 
     @Test

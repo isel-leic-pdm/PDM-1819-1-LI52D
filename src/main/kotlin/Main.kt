@@ -5,5 +5,5 @@ fun main(args: Array<String>) {
         print("Please enter a valid expression")
         return
     }
-    print("$input = ${parse(input).evaluate()}")
+    print("$input = ${parse(input)()}")
 }

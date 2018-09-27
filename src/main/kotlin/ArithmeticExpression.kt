@@ -1,7 +1,10 @@
 import java.lang.IllegalArgumentException
 
-enum class Operator {
-    PLUS, MINUS, TIMES, DIV;
+enum class Operator(val evaluate: (Int, Int) -> Int) {
+    PLUS({ left, right -> left + right }),
+    MINUS({ left, right -> left - right }),
+    TIMES({ left, right -> left * right }),
+    DIV({ left, right -> left / right });
 
     companion object {
         fun fromString(symbol: String) = when (symbol) {
@@ -14,23 +17,13 @@ enum class Operator {
     }
 }
 
-interface Expression {
-    fun evaluate(): Int
+typealias Expression = () -> Int
+
+fun constantEvaluate(value: Int) = { value }
+
+fun arithmeticExpressionEvaluate(opr: Operator,
+                                 left: Expression,
+                                 right: Expression) = {
+    opr.evaluate(left(), right())
 }
 
-class ArithmeticExpression(private val opr: Operator,
-                           private val left: Expression,
-                           private val right: Expression) : Expression {
-
-    override fun evaluate(): Int =
-        when (opr) {
-            Operator.PLUS -> left.evaluate() + right.evaluate()
-            Operator.MINUS -> left.evaluate() - right.evaluate()
-            Operator.TIMES -> left.evaluate() * right.evaluate()
-            Operator.DIV -> left.evaluate() / right.evaluate()
-        }
-}
-
-class Constant(val value: Int) : Expression {
-    override fun evaluate() = value
-}

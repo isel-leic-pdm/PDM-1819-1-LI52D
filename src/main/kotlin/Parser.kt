@@ -11,13 +11,13 @@ fun expression(tokens: MutableList<String>): Expression {
         throw NoSuchElementException()
 
     val value = constant(tokens.first())
-    return if (value != null) { tokens.removeAt(0); Constant(value) }
+    return if (value != null) { tokens.removeAt(0); constantEvaluate(value) }
     else arithmeticExpression(tokens)
 }
 
-fun arithmeticExpression(tokens: MutableList<String>): ArithmeticExpression {
+fun arithmeticExpression(tokens: MutableList<String>): Expression {
     val operator = Operator.fromString(tokens.removeAt(0))
-    return ArithmeticExpression(operator, expression(tokens), expression(tokens))
+    return arithmeticExpressionEvaluate(operator, expression(tokens), expression(tokens))
 }
 
 fun parse(exp: String): Expression {
