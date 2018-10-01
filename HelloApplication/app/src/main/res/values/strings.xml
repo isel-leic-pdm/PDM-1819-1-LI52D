@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">HelloApplication</string>
+    <string name="question">Your name?</string>
+    <string name="say_it">Greet!</string>
+    <string name="name">Name</string>
+    <string name="greeting">Hello %s</string>
+</resources>
