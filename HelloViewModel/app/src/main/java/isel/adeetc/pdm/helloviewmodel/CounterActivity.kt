@@ -3,9 +3,10 @@ package isel.adeetc.pdm.helloviewmodel
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import isel.adeetc.pdm.kotlinx.getViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val viewStateKey = "counterValue"
+const val counter = "counterValue"
 
 class CounterActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class CounterActivity : AppCompatActivity() {
         super.onCreate(savedState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProviders.of(this).get(viewStateKey, Counter::class.java)
+        viewModel = this.getViewModel(counter)
         updateUI(viewModel)
 
         incButton.setOnClickListener { updateUI(++viewModel) }
