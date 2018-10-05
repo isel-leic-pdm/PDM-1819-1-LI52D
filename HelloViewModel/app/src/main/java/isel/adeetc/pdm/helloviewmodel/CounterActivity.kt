@@ -1,5 +1,6 @@
 package isel.adeetc.pdm.helloviewmodel
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,15 +19,10 @@ class CounterActivity : AppCompatActivity() {
         super.onCreate(savedState)
         setContentView(R.layout.activity_main)
 
-        viewModel = savedState?.getParcelable(viewStateKey) ?: Counter(5)
+        viewModel = ViewModelProviders.of(this).get(viewStateKey, Counter::class.java)
         updateUI(viewModel)
 
         incButton.setOnClickListener { updateUI(++viewModel) }
         decButton.setOnClickListener { updateUI(--viewModel) }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-        outState?.putParcelable(viewStateKey, viewModel)
     }
 }

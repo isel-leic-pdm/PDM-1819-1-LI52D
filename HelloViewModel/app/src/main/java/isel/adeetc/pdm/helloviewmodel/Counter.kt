@@ -1,22 +1,16 @@
 package isel.adeetc.pdm.helloviewmodel
 
-import android.os.Parcel
-import android.os.Parcelable
+import android.arch.lifecycle.ViewModel
 
-data class Counter(val modulo: Int, val value: Int = 0): Parcelable {
+data class Counter(val modulo: Int=10, var value: Int = 0): ViewModel() {
 
-    companion object CREATOR : Parcelable.Creator<Counter> {
-        override fun createFromParcel(parcel: Parcel) = Counter(parcel.readInt(), parcel.readInt())
-        override fun newArray(size: Int): Array<Counter?> = arrayOfNulls(size)
+    operator fun inc(): Counter {
+        value = (value + 1) % modulo
+        return this
     }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeInt(modulo)
-        dest?.writeInt(value)
+    operator fun dec(): Counter {
+        value = if (value == 0) modulo - 1 else value - 1
+        return this
     }
-
-    override fun describeContents() = 0
-
-    operator fun inc(): Counter = Counter(modulo, (value + 1) % modulo)
-    operator fun dec(): Counter = Counter(modulo, if (value == 0) modulo - 1 else value - 1)
 }
