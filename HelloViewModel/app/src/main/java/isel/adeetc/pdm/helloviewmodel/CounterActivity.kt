@@ -1,6 +1,5 @@
 package isel.adeetc.pdm.helloviewmodel
 
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import isel.adeetc.pdm.kotlinx.getViewModel
@@ -20,7 +19,7 @@ class CounterActivity : AppCompatActivity() {
         super.onCreate(savedState)
         setContentView(R.layout.activity_main)
 
-        viewModel = this.getViewModel(counter)
+        viewModel = this.getViewModel(counter) { Counter(5) }
         updateUI(viewModel)
 
         incButton.setOnClickListener { updateUI(++viewModel) }
