@@ -5,7 +5,7 @@ import android.os.Bundle
 import isel.adeetc.pdm.kotlinx.getViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val counter = "counterValue"
+const val counterKey = "counterValue"
 
 class CounterActivity : AppCompatActivity() {
 
@@ -19,10 +19,12 @@ class CounterActivity : AppCompatActivity() {
         super.onCreate(savedState)
         setContentView(R.layout.activity_main)
 
-        viewModel = this.getViewModel(counter) { Counter(5) }
+        viewModel = this.getViewModel(counterKey) { Counter(5) }
         updateUI(viewModel)
 
         incButton.setOnClickListener { updateUI(++viewModel) }
         decButton.setOnClickListener { updateUI(--viewModel) }
     }
+
+
 }
