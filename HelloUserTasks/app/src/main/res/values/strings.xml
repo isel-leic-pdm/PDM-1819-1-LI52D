@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">HelloUserTasks</string>
+    <string name="display_msg_button">Send</string>
+    <string name="enter_text_toast">Please enter some text</string>
+    <string name="ok_button_text">OK</string>
+    <string name="go_get_button">Get it</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="cancelled_toast">Operation cancelled</string>
+</resources>

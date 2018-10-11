@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="display_msg_button">Enviar</string>
+    <string name="enter_text_toast">Insira texto por favor</string>
+    <string name="ok_button_text">OK</string>
+    <string name="go_get_button">Obter</string>
+    <string name="cancel_button_text">Cancelar</string>
+    <string name="cancelled_toast">Operação cancelada</string>
+</resources>
