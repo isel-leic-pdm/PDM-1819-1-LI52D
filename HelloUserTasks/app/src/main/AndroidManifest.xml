@@ -11,17 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AActivity" android:label="A B">
+        <activity android:name=".AActivity"
+            android:label="A B"
+            android:documentLaunchMode="intoExisting"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            tools:ignore="UnusedAttribute">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".BActivity" />
-        <activity android:name=".A1Activity" android:label="A1 B1">
+        <activity android:name=".A1Activity"
+            android:label="A1 B1"
+            android:documentLaunchMode="intoExisting"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            tools:ignore="UnusedAttribute">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
