@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+lateinit var theActivity: MainActivity
 
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        theActivity = this
         Log.v("HelloThreadingModel", "onCreate for ${hashCode()} on Thread ${Thread.currentThread().id} is working hard")
 
         hitMeButton.setOnClickListener {
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onPostExecute(result: String?) {
                     Log.v("HelloThreadingModel", "Thread ${Thread.currentThread().id} is displaying result")
                     Log.v("HelloThreadingModel", "Activity is ${this@MainActivity.hashCode()}")
-                    msgTextView.text = result
+                    theActivity.msgTextView.text = result
                 }
             }
 
