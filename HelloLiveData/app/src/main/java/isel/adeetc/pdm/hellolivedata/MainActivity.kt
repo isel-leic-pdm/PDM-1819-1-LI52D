@@ -2,8 +2,8 @@ package isel.adeetc.pdm.hellolivedata
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import isel.adeetc.pdm.hellolivedata.kotlinx.getViewModel
+import isel.adeetc.pdm.hellolivedata.kotlinx.observe
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val model = ViewModelProviders.of(this).get(AViewModel::class.java)
-        model.data.observe(this, Observer<String> { msgTextView.text = it })
+        val model = this.getViewModel<AViewModel>()
+        model.data.observe(this) { msgTextView.text = it }
 
         hitMeButton.setOnClickListener { model.updateData() }
     }
