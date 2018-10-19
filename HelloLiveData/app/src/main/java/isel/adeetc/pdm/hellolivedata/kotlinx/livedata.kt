@@ -5,5 +5,5 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
 fun <T> LiveData<T>.observe(owner: LifecycleOwner, onChanged: (T) -> Unit) {
-    this.observe(owner, Observer { onChanged(it) })
+    this.observe(owner) { onChanged(it) }
 }

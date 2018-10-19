@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Câmbios</string>
+    <string name="action_title">Actualizar câmbios</string>
+    <string name="action_name">Obter</string>
+    <string name="error_network">Origem dos dados inacessível</string>
+</resources>
