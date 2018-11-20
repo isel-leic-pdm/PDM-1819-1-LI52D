@@ -13,12 +13,13 @@ import java.util.*
 class CurrenciesRepository(private val app: CurrencyApplication) {
 
     private val db = Room
-            .inMemoryDatabaseBuilder(app, CurrenciesDatabase::class.java)
+            .databaseBuilder(app, CurrenciesDatabase::class.java, "quotes-db")
             .build()
 
     private fun saveToDB(dto: CurrenciesDTO): AsyncWork<List<Quote>> {
         return runAsync {
             if (dto.success) {
+                Log.v(app.TAG, "Saving quotes to DB")
                 val date = Calendar.getInstance().format()
                 val result = dto.quotes.map { Quote(it.currency, it.quote, date) }
                 db.quoteDAO().insertAll(*result.toTypedArray())
@@ -30,6 +31,7 @@ class CurrenciesRepository(private val app: CurrencyApplication) {
 
     private fun fetchDataFromAPI(success: (CurrenciesDTO) -> Unit) {
 
+        Log.v(app.TAG, "Fetching quotes from API")
         val queue = app.queue
         val url = "http://apilayer.net/api/live" +
                 "?access_key=a76c13f17a0d445356c0f4d36738fe92" +
