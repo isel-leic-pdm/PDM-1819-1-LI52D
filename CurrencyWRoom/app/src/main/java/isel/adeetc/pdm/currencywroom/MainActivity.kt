@@ -1,14 +1,15 @@
 package isel.adeetc.pdm.currencywroom
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import isel.adeetc.pdm.currencywroom.network.Currencies
+import com.google.android.material.snackbar.Snackbar
+import isel.adeetc.pdm.currencywroom.model.CurrenciesRepository
+import isel.adeetc.pdm.currencywroom.model.Quote
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         currenciesView.adapter = CurrenciesAdapter(model)
 
-        model.currencies.observe(this, Observer<Currencies> {
+        model.currencies.observe(this, Observer<List<Quote>> {
             currenciesView.adapter = CurrenciesAdapter(model)
         })
 

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -29,7 +29,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.0.0'
     implementation "androidx.room:room-runtime:2.1.0-alpha02"
-    annotationProcessor "androidx.room:room-compiler:2.1.0-alpha02"
+    kapt "androidx.room:room-compiler:2.1.0-alpha02"
     kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 
     implementation 'com.android.volley:volley:1.1.1'

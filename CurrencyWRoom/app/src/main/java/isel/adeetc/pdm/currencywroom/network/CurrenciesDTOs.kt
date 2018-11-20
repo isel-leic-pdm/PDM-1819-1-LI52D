@@ -7,28 +7,28 @@ import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
-class Currencies(
+class CurrenciesDTO(
         val success: Boolean,
         val terms: String,
         val privacy: String,
         @JsonProperty("timestamp") val timeStamp: Long,
         val source: String,
-        val quotes: Quotes)
+        val quotes: QuotesDTO)
 
-class Quote(val currency: String, val quote: Float)
+class QuoteDTO(val currency: String, val quote: Float)
 
 @JsonDeserialize(using = QuotesDeserializer::class)
-class Quotes : ArrayList<Quote>()
+class QuotesDTO : ArrayList<QuoteDTO>()
 
-class QuotesDeserializer : JsonDeserializer<Quotes>() {
-    override fun deserialize(parser: JsonParser?, ctxt: DeserializationContext?): Quotes {
-        val quotes = Quotes()
+class QuotesDeserializer : JsonDeserializer<QuotesDTO>() {
+    override fun deserialize(parser: JsonParser?, ctxt: DeserializationContext?): QuotesDTO {
+        val quotes = QuotesDTO()
         while(parser?.hasCurrentToken() == true) {
             parser.nextToken()
             if (parser.currentToken == JsonToken.FIELD_NAME) {
                 val fieldName = parser.currentName()
                 parser.nextToken()
-                quotes.add(Quote(fieldName, parser.floatValue))
+                quotes.add(QuoteDTO(fieldName, parser.floatValue))
             }
         }
         return quotes
