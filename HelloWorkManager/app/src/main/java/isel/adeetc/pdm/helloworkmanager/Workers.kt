@@ -17,7 +17,7 @@ class FirstWorker(context : Context, params : WorkerParameters)
         Log.v(app.TAG, "FirstWorker running on thread ${Thread.currentThread().name} on pid ${Process.myPid()}")
         Thread.sleep(10000)
         outputData = Data.Builder()
-            .put(KEY_RESULT, "The result of the FirstWorker")
+            .putString(KEY_RESULT, "The result of the FirstWorker")
             .build()
         Log.v(app.TAG, "FirstWorker Work completed successfully")
         return Result.SUCCESS
