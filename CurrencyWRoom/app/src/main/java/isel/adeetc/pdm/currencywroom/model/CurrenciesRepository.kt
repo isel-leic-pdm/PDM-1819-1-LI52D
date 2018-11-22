@@ -51,8 +51,11 @@ class CurrenciesRepository(private val app: CurrencyApplication) {
         runAsync {
             db.quoteDAO().getAllByDate(Calendar.getInstance().format())
         }.andThen {
-            if (it.size == 0) fetchDataFromAPI { saveToDB(it).andThen(success) }
-            else success(it)
+            if (it.isEmpty()) fetchDataFromAPI { saveToDB(it).andThen(success) }
+            else {
+                Log.v(app.TAG, "Got quotes from DB")
+                success(it)
+            }
         }
     }
 }

@@ -2,7 +2,6 @@ package isel.adeetc.pdm.currencywroom.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import isel.adeetc.pdm.currencywroom.network.QuoteDTO
 import java.util.*
 
 // IMPORTANT: THIS IS A DEMO!
