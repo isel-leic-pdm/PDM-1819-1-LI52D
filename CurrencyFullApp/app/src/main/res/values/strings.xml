@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Currencies Final</string>
+    <string name="action_title">Update currencies</string>
+    <string name="action_name">Get</string>
+    <string name="error_network">Could not reach data origin</string>
+    <string name="quotes_notification_title">Today\'s quotes</string>
+    <string name="quotes_notification_content">Quotes have been downloaded</string>
+    <string name="quotes_channel_name">Quotes updates</string>
+    <string name="quotes_channel_description">Channel for quote\'s updates notification</string>
+</resources>

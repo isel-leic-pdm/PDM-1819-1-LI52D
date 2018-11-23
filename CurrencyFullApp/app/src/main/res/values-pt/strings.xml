@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Câmbios Final</string>
+    <string name="action_title">Actualizar câmbios</string>
+    <string name="action_name">Obter</string>
+    <string name="error_network">Origem dos dados inacessível</string>
+    <string name="quotes_notification_title">Cotações de hoje</string>
+    <string name="quotes_notification_content">Foram descarregadas as cotações</string>
+    <string name="quotes_channel_name">Notificações de cotaçoes</string>
+    <string name="quotes_channel_description">Canal usado para notificações de obtenção de cotações</string>
+</resources>
