@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HelloFirebase</string>
+    <string name="button_text">Post</string>
+    <string name="edit_text_hint">Message to post</string>
+</resources>
