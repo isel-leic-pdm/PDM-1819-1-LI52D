@@ -11,7 +11,10 @@ class MessageBoard(private val app: HelloFirestoreApplication) {
     val db = FirebaseFirestore.getInstance()
 
     init {
-        val docRef = db.collection("messageBoard").document("message")
+        val docRef = db
+            .collection("messageBoard")
+            .document("message")
+
         docRef.addSnapshotListener(EventListener<DocumentSnapshot> { snapshot, e ->
             if (e != null) {
                 Log.w(app.TAG, "Listen failed.", e)
@@ -25,7 +28,10 @@ class MessageBoard(private val app: HelloFirestoreApplication) {
     }
 
     fun post(newMessage: Map<String, String>) {
-        val docRef = db.collection("messageBoard").document("message")
+        val docRef = db
+            .collection("messageBoard")
+            .document("message")
+
         docRef.set(newMessage)
     }
 }
